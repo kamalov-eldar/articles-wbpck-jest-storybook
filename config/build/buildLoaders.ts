@@ -1,11 +1,30 @@
 import webpack from 'webpack';
+import { IBuildOptions } from './types/config';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-export function buildLoaders(): webpack.RuleSetRule[] {
-    // порядок Loders в массиве  имеет значение
+export function buildLoaders({ isDev }: IBuildOptions): webpack.RuleSetRule[] {
+    const cssLoader = {
+        test: /\.s[ac]ss$/i,
+        use: [
+            isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+            {
+                loader: 'css-loader',
+                options: {
+                    modules: {
+                        auto: (resPath: string) => Boolean(resPath.includes('.module.')),
+                        localIdentName: isDev ? '[path][name]__[local]' : '[hash:base64:8]',
+                    },
+                },
+            },
+            'sass-loader',
+        ],
+    };
+
     const typescriptLoader = {
-        test: /\.(?:js|ts)x?$/,
+        test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
     };
-    return [typescriptLoader];
+
+    return [typescriptLoader, cssLoader];
 }

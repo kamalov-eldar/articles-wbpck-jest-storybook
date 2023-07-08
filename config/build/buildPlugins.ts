@@ -2,14 +2,18 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 import webpack from 'webpack';
 import { IBuildOptions } from './types/config';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 export function buildPlugins({ paths }: IBuildOptions): webpack.WebpackPluginInstance[] {
     return [
         new HtmlWebpackPlugin({
             template: paths.html,
-            title: 'Development',
         }),
         new webpack.ProgressPlugin(),
+        new MiniCssExtractPlugin({
+            filename: 'css/[name].[contenthash:8].css',
+            chunkFilename: 'css/[name].[contenthash:8].css',
+        }),
         // применять изменения только при горячей перезагрузке
         // new webpack.HotModuleReplacementPlugin(),
     ];
