@@ -1,13 +1,10 @@
 import React, { FC, Suspense, useState } from 'react';
-import Counter from './components/Counter';
 import './styles/index.scss';
 
 import { Link, Route, Routes } from 'react-router-dom';
-import AboutPage from './pages/AboutPage/AboutPage';
-import MainPage from './pages/MainPage/MainPage';
-import { AboutPageAsync } from './pages/AboutPage/AboutPage.async';
-import { MainPageAsync } from './pages/MainPage/MainPage.async';
-import { useTheme } from './context/useTheme';
+import { useTheme } from './providers/ThemeProvider';
+import { AboutPage } from 'pages/AboutPage';
+import { MainPage } from 'pages/MainPage';
 
 export enum Theme {
     LIGHT = 'light',
@@ -25,8 +22,8 @@ const App: FC = () => {
             <Link to={'/about'}>О Сайте</Link>
             <Suspense fallback={<div>Загрузка....</div>}>
                 <Routes>
-                    <Route path='/' element={<MainPageAsync />}></Route>
-                    <Route path='/about' element={<AboutPageAsync />}></Route>
+                    <Route path='/' element={<MainPage />}></Route>
+                    <Route path='/about' element={<AboutPage />}></Route>
                     {/*    <Counter /> */}
                 </Routes>
             </Suspense>

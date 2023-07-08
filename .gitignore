@@ -1,4 +1,4 @@
+/build
 node_modules
 .idea
-# удалить после обновления node на сервере
 package-lock.json
