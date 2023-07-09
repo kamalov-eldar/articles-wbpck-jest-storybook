@@ -5,6 +5,7 @@ import { Link, Route, Routes } from 'react-router-dom';
 import { useTheme } from './providers/ThemeProvider';
 import { AboutPage } from 'pages/AboutPage';
 import { MainPage } from 'pages/MainPage';
+import { AppRouter } from './providers/router';
 
 export enum Theme {
     LIGHT = 'light',
@@ -20,13 +21,7 @@ const App: FC = () => {
 
             <Link to={'/'}>Главная</Link>
             <Link to={'/about'}>О Сайте</Link>
-            <Suspense fallback={<div>Загрузка....</div>}>
-                <Routes>
-                    <Route path='/' element={<MainPage />}></Route>
-                    <Route path='/about' element={<AboutPage />}></Route>
-                    {/*    <Counter /> */}
-                </Routes>
-            </Suspense>
+            <AppRouter></AppRouter>
         </div>
     );
 };
