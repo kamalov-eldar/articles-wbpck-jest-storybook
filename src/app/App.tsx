@@ -20,7 +20,6 @@ const App: FC = () => {
         <div className={`app ${theme}`}>
             <Navbar />
             <AppRouter />
-            <button onClick={toggleTheme}>TOGGLE</button>
         </div>
     );
 };
