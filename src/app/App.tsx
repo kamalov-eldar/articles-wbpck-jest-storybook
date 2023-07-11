@@ -19,12 +19,14 @@ const App: FC = () => {
 
     return (
         <div className={`app ${theme}`}>
-            <Navbar />
+            <Suspense fallback=''>
+                <Navbar />
 
-            <div className='content-page'>
-                <Sidebar />
-                <AppRouter />
-            </div>
+                <div className='content-page'>
+                    <Sidebar />
+                    <AppRouter />
+                </div>
+            </Suspense>
         </div>
     );
 };

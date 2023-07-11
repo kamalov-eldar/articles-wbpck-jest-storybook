@@ -4,7 +4,7 @@ import webpack from 'webpack';
 import { IBuildOptions } from './types/config';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-export function buildPlugins({ paths }: IBuildOptions): webpack.WebpackPluginInstance[] {
+export function buildPlugins({ paths,isDev }: IBuildOptions): webpack.WebpackPluginInstance[] {
     return [
         new HtmlWebpackPlugin({
             template: paths.html,
@@ -16,5 +16,8 @@ export function buildPlugins({ paths }: IBuildOptions): webpack.WebpackPluginIns
         }),
         // применять изменения только при горячей перезагрузке
         // new webpack.HotModuleReplacementPlugin(),
+        new webpack.DefinePlugin({
+            __IS_DEV__: JSON.stringify(isDev),
+        })
     ];
 }
