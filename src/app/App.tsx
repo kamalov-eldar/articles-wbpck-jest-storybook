@@ -16,15 +16,17 @@ const App: FC = () => {
 
     return (
         <div className={`app ${theme}`}>
-            <Suspense fallback="">
+            <Suspense fallback=''>
                 <Navbar />
-
-                <div className="content-page">
+                dsfsdfsdf
+                <div className='content-page'>
                     <Sidebar />
+                    dsfsdfsdf
                     <AppRouter />
                 </div>
             </Suspense>
         </div>
     );
 };
+
 export default App;
