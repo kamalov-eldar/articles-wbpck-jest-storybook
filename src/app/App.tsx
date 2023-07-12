@@ -1,13 +1,10 @@
-import React, { FC, Suspense, useState } from 'react';
+import { FC, Suspense } from 'react';
 import './styles/index.scss';
 
-import { Link, Route, Routes } from 'react-router-dom';
-import { useTheme } from './providers/ThemeProvider';
-import { AboutPage } from 'pages/AboutPage';
-import { MainPage } from 'pages/MainPage';
-import { AppRouter } from './providers/router';
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
+import { useTheme } from './providers/ThemeProvider';
+import { AppRouter } from './providers/router';
 
 export enum Theme {
     LIGHT = 'light',
@@ -19,10 +16,10 @@ const App: FC = () => {
 
     return (
         <div className={`app ${theme}`}>
-            <Suspense fallback=''>
+            <Suspense fallback="">
                 <Navbar />
 
-                <div className='content-page'>
+                <div className="content-page">
                     <Sidebar />
                     <AppRouter />
                 </div>

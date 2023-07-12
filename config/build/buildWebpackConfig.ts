@@ -1,6 +1,6 @@
-import { IBuildOptions } from './types/config';
 import webpack from 'webpack';
 import path from 'path';
+import { IBuildOptions } from './types/config';
 import { buildPlugins } from './buildPlugins';
 import { buildLoaders } from './buildLoaders';
 import { buildResolvers } from './buildResolvers';
@@ -10,7 +10,7 @@ export function buildWebpackConfig(options: IBuildOptions): webpack.Configuratio
     const { paths, mode, isDev } = options;
 
     return {
-        mode: mode,
+        mode,
         entry: paths.entry,
         output: {
             filename: '[name].[contenthash].js',

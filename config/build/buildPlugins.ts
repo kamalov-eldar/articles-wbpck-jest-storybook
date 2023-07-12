@@ -1,10 +1,10 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 import webpack from 'webpack';
-import { IBuildOptions } from './types/config';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { IBuildOptions } from './types/config';
 
-export function buildPlugins({ paths,isDev }: IBuildOptions): webpack.WebpackPluginInstance[] {
+export function buildPlugins({ paths, isDev }: IBuildOptions): webpack.WebpackPluginInstance[] {
     return [
         new HtmlWebpackPlugin({
             template: paths.html,
@@ -18,6 +18,8 @@ export function buildPlugins({ paths,isDev }: IBuildOptions): webpack.WebpackPlu
         // new webpack.HotModuleReplacementPlugin(),
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
-        })
+        }),
+        new webpack.HotModuleReplacementPlugin(),
+
     ];
 }
