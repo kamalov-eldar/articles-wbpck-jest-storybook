@@ -1,4 +1,4 @@
-import { FC, Suspense } from 'react';
+import { FC, Suspense, useEffect } from 'react';
 import './styles/index.scss';
 
 import { Navbar } from 'widgets/Navbar';
@@ -13,6 +13,10 @@ export enum Theme {
 
 const App: FC = () => {
     const { theme, toggleTheme } = useTheme();
+
+    useEffect(() => {
+       // throw new Error('');
+    }, []);
 
     return (
         <div className={`app ${theme}`}>
