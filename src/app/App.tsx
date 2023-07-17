@@ -15,9 +15,10 @@ const App: FC = () => {
     const { theme, toggleTheme } = useTheme();
 
     useEffect(() => {
-       // throw new Error('');
+        // throw new Error('');
     }, []);
 
+    
     return (
         <div className={`app ${theme}`}>
             <Suspense fallback=''>
