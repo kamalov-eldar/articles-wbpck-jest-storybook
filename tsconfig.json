@@ -8,7 +8,7 @@
         "module": "esnext",
         // В какую спецификацию компилируем: для поддержки большинства браузеров
         "target": "es5",
-        "jsx": "react-jsx",
+        "jsx": "react-jsxdev",
         // Компилятор будет обрабатывать не только TS файлы, но и JS файлы
         "allowJs": true,
         "moduleResolution": "node",
@@ -38,5 +38,6 @@
         "compilerOptions": {
             "module": "CommonJS"
         }
-    }
+    },
+    "include": ["./config/jest/setupTests.ts", "./**/*"]
 }
