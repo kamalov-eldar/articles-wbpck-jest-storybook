@@ -1,7 +1,6 @@
 import webpack from 'webpack';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { IBuildOptions } from './types/config';
 import { buildCssLoader } from './loaders/buildCssLoader';
+import { IBuildOptions } from './types/config';
 
 export function buildLoaders({ isDev }: IBuildOptions): webpack.RuleSetRule[] {
     const svgLoader = {
@@ -10,24 +9,28 @@ export function buildLoaders({ isDev }: IBuildOptions): webpack.RuleSetRule[] {
     };
 
     const babelLoader = {
-        test: /\.s[ac]ss$/i,
-        use: [
-            isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-            {
-                loader: 'css-loader',
-                options: {
-                    modules: {
-                        auto: (resPath: string) => Boolean(resPath.includes('.module.')),
-                        localIdentName: isDev ? '[path][name]__[local]' : '[hash:base64:8]',
-                    },
-                },
+        test: /\.(js|jsx|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+            loader: 'babel-loader',
+            options: {
+                presets: ['@babel/preset-env'],
+                plugins: [
+                    [
+                        'i18next-extract',
+                        {
+                            locales: ['ru', 'en'],
+                            keyAsDefaultValue: true,
+                        },
+                    ],
+                ],
             },
-            'sass-loader',
-        ],
+        },
     };
 
     const cssLoader = buildCssLoader(isDev);
 
+    // Если не используем тайпскрипт - нужен babel-loader
     const typescriptLoader = {
         test: /\.tsx?$/,
         use: 'ts-loader',
