@@ -18,15 +18,14 @@ const App: FC = () => {
         // throw new Error('');
     }, []);
 
-    
     return (
         <div className={`app ${theme}`}>
-            <Suspense fallback=''>
+            <Suspense fallback="">
                 <Navbar />
-                dsfsdfsdf
-                <div className='content-page'>
+
+                <div className="content-page">
                     <Sidebar />
-                    dsfsdfsdf
+
                     <AppRouter />
                 </div>
             </Suspense>
