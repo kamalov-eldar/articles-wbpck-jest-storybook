@@ -1,19 +1,9 @@
 module.exports = {
-    env: {
-        browser: true,
-        es2021: true,
-        jest: true,
-    },
+    env: { browser: true, es2021: true, jest: true },
     extends: ["plugin:react/recommended", "airbnb", "plugin:i18next/recommended"],
     parser: "@typescript-eslint/parser",
-    parserOptions: {
-        ecmaFeatures: {
-            jsx: true,
-        },
-        ecmaVersion: "latest",
-        sourceType: "module",
-    },
-    plugins: ["react", "@typescript-eslint", "i18next", "jest"],
+    parserOptions: { ecmaFeatures: { jsx: true }, ecmaVersion: "latest", sourceType: "module" },
+    plugins: ["react", "@typescript-eslint", "i18next", "jest", "react-hooks"],
     rules: {
         "react/jsx-indent": [2, 4],
         "react/jsx-indent-props": [2, 4],
@@ -31,18 +21,26 @@ module.exports = {
         "import/no-extraneous-dependencies": "off",
         "no-underscore-dangle": "off",
         "i18next/no-literal-string": ["error", { markupOnly: true, ignoreAttribute: ["data-testid", "to"] }],
-        "max-len": ["error", { code: 135 }],
         quotes: "off",
-    },
-    globals: {
-        __IS_DEV__: true,
-    },
-    overrides: [
-        {
-            files: ["**/src/**/*.test.{ts,tsx}"],
-            rules: {
-                "i18next/no-literal-string": "off",
+        "jsx-a11y/no-static-element-interactions": "off",
+        "jsx-a11y/click-events-have-key-events": "off",
+        "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+        "react-hooks/exhaustive-deps": "error", // Checks effect dependencies
+        // "object-expression": { multiline: true, minProperties: 1 },
+        "object-curly-newline": "off",
+        "implicit-arrow-linebreak": "off",
+        "max-len": ["error", { code: 135 }],
+        // "object-curly-newline": ["error", "never"],
+        /*  "object-curly-newline": [
+            "error",
+            {
+                ObjectExpression: "never",
+                ObjectPattern: { multiline: true },
+                ImportDeclaration: "never",
+                ExportDeclaration: { multiline: true, minProperties: null },
             },
-        },
-    ],
+        ], */
+    },
+    globals: { __IS_DEV__: true },
+    overrides: [{ files: ["**/src/**/*.{test,stories}.{ts,tsx}"], rules: { "i18next/no-literal-string": "off", "max-len": "off" } }],
 };
