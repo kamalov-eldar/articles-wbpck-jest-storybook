@@ -86,7 +86,7 @@
     },
     "dependencies": {
         "@loki/target-chrome-app": "^0.32.0",
-        "@reduxjs/toolkit": "^1.8.0",
+        "@reduxjs/toolkit": "^1.9.5",
         "axios": "^0.26.1",
         "concurrently": "^7.0.0",
         "i18next": "^21.6.11",
