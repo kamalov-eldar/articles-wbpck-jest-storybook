@@ -30,6 +30,8 @@ module.exports = {
         "object-curly-newline": "off",
         "implicit-arrow-linebreak": "off",
         "max-len": ["error", { code: 135 }],
+        "no-param-reassign": "off",
+
         // "object-curly-newline": ["error", "never"],
         /*  "object-curly-newline": [
             "error",
