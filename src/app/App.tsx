@@ -3,15 +3,19 @@ import { FC, Suspense, useEffect } from "react";
 import { Navbar } from "widgets/Navbar";
 import { Sidebar } from "widgets/Sidebar";
 import { Modal } from "shared/ui/Modal/Modal";
+import { useDispatch } from "react-redux";
+import { userActions } from "entities/User";
 import { useTheme } from "./providers/ThemeProvider";
 import { AppRouter } from "./providers/router";
 
 const App: FC = () => {
-    const { theme, toggleTheme } = useTheme();
+    const { theme } = useTheme();
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        // throw new Error('');
-    }, []);
+        dispatch(userActions.initAuthData());
+    }, [dispatch]);
 
     return (
         <div className={`app ${theme}`}>
