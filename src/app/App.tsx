@@ -1,16 +1,14 @@
-import { FC, Suspense, useEffect } from "react";
+import React, { Suspense, useEffect } from 'react';
+import { classNames } from 'shared/lib/classNames/classNames';
+import { useTheme } from 'app/providers/ThemeProvider';
+import { AppRouter } from 'app/providers/router';
+import { Navbar } from 'widgets/Navbar';
+import { Sidebar } from 'widgets/Sidebar';
+import { useDispatch } from 'react-redux';
+import { userActions } from 'entities/User';
 
-import { Navbar } from "widgets/Navbar";
-import { Sidebar } from "widgets/Sidebar";
-import { Modal } from "shared/ui/Modal/Modal";
-import { useDispatch } from "react-redux";
-import { userActions } from "entities/User";
-import { useTheme } from "./providers/ThemeProvider";
-import { AppRouter } from "./providers/router";
-
-const App: FC = () => {
+function App() {
     const { theme } = useTheme();
-
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -18,10 +16,9 @@ const App: FC = () => {
     }, [dispatch]);
 
     return (
-        <div className={`app ${theme}`}>
+        <div className={classNames('app', {}, [theme])}>
             <Suspense fallback="">
                 <Navbar />
-                <Modal />
                 <div className="content-page">
                     <Sidebar />
                     <AppRouter />
@@ -29,6 +26,6 @@ const App: FC = () => {
             </Suspense>
         </div>
     );
-};
+}
 
 export default App;

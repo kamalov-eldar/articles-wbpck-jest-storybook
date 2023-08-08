@@ -1,11 +1,9 @@
-import { classNames } from "shared/lib/classNames/classNames";
-import cls from "./Text.module.scss";
+import { classNames } from 'shared/lib/classNames/classNames';
+import cls from './Text.module.scss';
 
 export enum TextTheme {
-    // eslint-disable-next-line no-unused-vars
-    PRIMARY = "primary",
-    // eslint-disable-next-line no-unused-vars
-    ERROR = "error",
+    PRIMARY = 'primary',
+    ERROR = 'error',
 }
 
 interface TextProps {
@@ -16,7 +14,12 @@ interface TextProps {
 }
 
 export const Text = (props: TextProps) => {
-    const { className, text, title, theme = TextTheme.PRIMARY } = props;
+    const {
+        className,
+        text,
+        title,
+        theme = TextTheme.PRIMARY,
+    } = props;
 
     return (
         <div className={classNames(cls.Text, { [cls[theme]]: true }, [className])}>
