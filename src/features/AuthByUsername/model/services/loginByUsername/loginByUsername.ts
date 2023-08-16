@@ -1,5 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AxiosInstance } from 'axios';
 import { User, userActions } from 'entities/User';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
 import { ThunkConfig } from 'app/providers/StoreProvider';
@@ -29,6 +28,7 @@ export const loginByUsername = createAsyncThunk<
             dispatch(userActions.setAuthData(response.data));
             return response.data;
         } catch (e) {
+            // eslint-disable-next-line no-console
             console.log(e);
             return rejectWithValue('error');
         }
