@@ -7,7 +7,7 @@ import { Currency } from 'entities/Currency';
 const data = {
     username: 'admin',
     age: 22,
-    country: Country.Ukraine,
+    country: Country.Madagascar,
     lastname: 'ulbi tv',
     first: 'asd',
     city: 'asf',
@@ -77,7 +77,6 @@ describe('profileSlice.test', () => {
             isLoading: false,
             validateErrors: undefined,
             readonly: true,
-            validateError: undefined,
             form: data,
             data,
         });

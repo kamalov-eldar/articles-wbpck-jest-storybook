@@ -6,7 +6,7 @@ import { validateProfileData } from './validateProfileData';
 const data = {
     username: 'admin',
     age: 22,
-    country: Country.Ukraine,
+    country: Country.Bahamas,
     lastname: 'ulbi tv',
     first: 'asd',
     city: 'asf',

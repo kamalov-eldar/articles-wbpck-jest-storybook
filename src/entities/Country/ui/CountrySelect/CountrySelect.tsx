@@ -12,11 +12,11 @@ interface CountrySelectProps {
 }
 
 const options = [
-    { value: Country.Armenia, content: Country.Armenia },
+    { value: Country.Bahamas, content: Country.Bahamas },
     { value: Country.Russia, content: Country.Russia },
-    { value: Country.Belarus, content: Country.Belarus },
-    { value: Country.Kazakhstan, content: Country.Kazakhstan },
-    { value: Country.Ukraine, content: Country.Ukraine },
+    { value: Country.Brasil, content: Country.Brasil },
+    { value: Country.Cuba, content: Country.Cuba },
+    { value: Country.Madagascar, content: Country.Madagascar },
 ];
 
 export const CountrySelect = memo(({
