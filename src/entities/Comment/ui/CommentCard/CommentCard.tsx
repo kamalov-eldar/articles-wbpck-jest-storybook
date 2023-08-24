@@ -1,14 +1,14 @@
-import { classNames } from 'shared/lib/classNames/classNames';
-import { memo } from 'react';
-import { Avatar } from 'shared/ui/Avatar/Avatar';
-import { Text, TextSize } from 'shared/ui/Text/Text';
-import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
-import cls from './CommentCard.module.scss';
-import { Comment } from '../../model/types/comment';
+import { classNames } from "shared/lib/classNames/classNames";
+import { memo } from "react";
+import { Avatar } from "shared/ui/Avatar/Avatar";
+import { Text, TextSize } from "shared/ui/Text/Text";
+import { Skeleton } from "shared/ui/Skeleton/Skeleton";
+import cls from "./CommentCard.module.scss";
+import { Comment } from "../../model/types/comment";
 
 interface CommentCardProps {
     className?: string;
-    comment: Comment;
+    comment?: Comment;
     isLoading?: boolean;
 }
 
@@ -25,6 +25,10 @@ export const CommentCard = memo((props: CommentCardProps) => {
                 <Skeleton className={cls.text} width="100%" height={50} />
             </div>
         );
+    }
+
+    if (!comment) {
+        return null;
     }
 
     return (

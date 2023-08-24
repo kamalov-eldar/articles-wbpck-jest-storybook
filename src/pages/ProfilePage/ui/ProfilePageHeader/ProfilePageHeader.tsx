@@ -1,23 +1,26 @@
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Text } from 'shared/ui/Text/Text';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
-import { getProfileReadonly, profileActions, updateProfileData } from 'entities/Profile';
-import { useCallback } from 'react';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import cls from './ProfilePageHeader.module.scss';
+import { classNames } from "shared/lib/classNames/classNames";
+import { Text } from "shared/ui/Text/Text";
+import { Button, ButtonTheme } from "shared/ui/Button/Button";
+import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { getProfileData, getProfileReadonly, profileActions, updateProfileData } from "entities/Profile";
+import { useCallback } from "react";
+import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
+import cls from "./ProfilePageHeader.module.scss";
+import { getUserAuthData } from "entities/User";
 
 interface ProfilePageHeaderProps {
     className?: string;
 }
 
 export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
-    const {
-        className,
-    } = props;
+    const { className } = props;
 
-    const { t } = useTranslation('profile');
+    const { t } = useTranslation("profile");
+
+    const authData = useSelector(getUserAuthData);
+    const profileData = useSelector(getProfileData);
+    const canEdit = authData?.id === profileData?.id;
 
     const readonly = useSelector(getProfileReadonly);
     const dispatch = useAppDispatch();
@@ -36,35 +39,25 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
 
     return (
         <div className={classNames(cls.ProfilePageHeader, {}, [className])}>
-            <Text title={t('Профиль')} />
-            {readonly
-                ? (
-                    <Button
-                        className={cls.editBtn}
-                        theme={ButtonTheme.OUTLINE}
-                        onClick={onEdit}
-                    >
-                        {t('Редактировать')}
-                    </Button>
-                )
-                : (
-                    <>
-                        <Button
-                            className={cls.editBtn}
-                            theme={ButtonTheme.OUTLINE_RED}
-                            onClick={onCancelEdit}
-                        >
-                            {t('Отменить')}
+            <Text title={t("Профиль")} />
+            {canEdit && (
+                <div className={cls.btnsWrapper}>
+                    {readonly ? (
+                        <Button className={cls.editBtn} theme={ButtonTheme.OUTLINE} onClick={onEdit}>
+                            {t("Редактировать")}
                         </Button>
-                        <Button
-                            className={cls.saveBtn}
-                            theme={ButtonTheme.OUTLINE}
-                            onClick={onSave}
-                        >
-                            {t('Сохранить')}
-                        </Button>
-                    </>
-                )}
+                    ) : (
+                        <>
+                            <Button className={cls.editBtn} theme={ButtonTheme.OUTLINE_RED} onClick={onCancelEdit}>
+                                {t("Отменить")}
+                            </Button>
+                            <Button className={cls.saveBtn} theme={ButtonTheme.OUTLINE} onClick={onSave}>
+                                {t("Сохранить")}
+                            </Button>
+                        </>
+                    )}
+                </div>
+            )}
         </div>
     );
 };
