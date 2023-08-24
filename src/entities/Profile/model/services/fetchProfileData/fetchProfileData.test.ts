@@ -7,7 +7,7 @@ import { fetchProfileData } from './fetchProfileData';
 const data = {
     username: 'admin',
     age: 22,
-    country: Country.Brasil,
+    country: Country.Ukraine,
     lastname: 'ulbi tv',
     first: 'asd',
     city: 'asf',
