@@ -23,7 +23,6 @@ export const getSidebarItems = createSelector(
             },
         ];
 
-        // userData будет undefined если юзер не авторизован
         if (userData) {
             sidebarItemsList.push(
                 {
