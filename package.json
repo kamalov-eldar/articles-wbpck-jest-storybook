@@ -1,5 +1,5 @@
 {
-  "name": "production-project",
+  "name": "ulbi-wbpck-jest-storybook",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "start:dev": "concurrently \"npm start\" \"npm run start:server\"",
     "start": "webpack serve --env port=3002",
     "start:server": "node ./json-server/index.js",
-    "build:prod": "webpack  --env mode=production",
+    "build:prod": "webpack  --env mode=production apiUrl=https://json-server-prod.vercel.app",
     "build:dev": "webpack  --env mode=development",
     "lint:ts": "eslint \"**/*.{ts,tsx}\"",
     "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
@@ -56,6 +56,7 @@
     "babel-loader": "^8.2.3",
     "babel-plugin-i18next-extract": "^0.8.3",
     "css-loader": "^6.6.0",
+    "copy-webpack-plugin": "^10.2.4",
     "eslint": "^8.10.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-i18next": "^5.1.2",
