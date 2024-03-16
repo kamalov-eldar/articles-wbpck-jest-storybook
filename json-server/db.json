@@ -607,6 +607,12 @@
       "userId": "1",
       "text": "456",
       "id": "Lhgzw0Y"
+    },
+    {
+      "articleId": "7",
+      "userId": "1",
+      "text": "ФЫОАУОЫА",
+      "id": "GNnBv6l"
     }
   ],
   "users": [
@@ -631,7 +637,7 @@
       "first": "jghwer",
       "lastname": "asfewr",
       "age": 465,
-      "currency": "RUB",
+      "currency": "EUR",
       "country": "Belarus",
       "city": "Moscow",
       "username": "admin213",
