@@ -7,6 +7,7 @@ import { To } from 'history';
 import { NavigateOptions } from 'react-router';
 import { LoginSchema } from '@/features/AuthByUsername';
 import { UserSchema } from '@/entities/User';
+import { CounterSchema } from '@/entities/Counter';
 import { ArticleDetailsSchema } from '@/entities/Article';
 import {
     ArticleDetailsCommentsSchema,
@@ -20,6 +21,7 @@ import { rtkApi } from '@/shared/api/rtkApi';
 import { ProfileSchema } from '@/features/editableProfileCard';
 
 export interface StateSchema {
+    counter: CounterSchema;
     user: UserSchema;
     ui: UISchema;
     [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;

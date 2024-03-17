@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { ErrorInfo, ReactNode, Suspense } from 'react';
 import { ErrorPage } from '@/widgets/ErrorPage';
 
